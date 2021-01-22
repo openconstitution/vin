@@ -1,9 +1,8 @@
 \documentclass{article}
 \usepackage{gensymb}
-\usepackage{lstlinebgrd}
 \usepackage{graphicx}
 \graphicspath{ {./res-images/} }
-
+\usepackage{listings}
 \begin{document}
 
 \title{Building Resilience Vaccine Distribution}
@@ -12,6 +11,11 @@
 
 
 \maketitle
+
+
+\abstract
+
+The COVID-19 pandemic has been one of the most influential pandemics in a century. Conventional life has been disrupted on a global scale, with rampant disease transmission leading to an unusual number of deaths. To take measures for this widespread virus transmission, vaccines have been developed since the early emergence of the pandemic. However, due to the substantial burden on the medical community and the gradual collapse of economies worldwide, vaccine testing processes were expedited to stabilize the uncontrolled virus. Development of some vaccines was accelerated by combining multiple phases of vaccine testing by running them in parallel. Once developed, the vaccines received early or limited approval. Yet, the distribution infrastructure and strategies remain undetermined, especially in necessitous regions. This study aims to address some of the deficiencies in the administration and distribution infrastructure of vaccines while proposing efficient and systematized strategies. 
 
 \section{Introduction}
 
@@ -22,17 +26,17 @@ Government of India has launched COWIN program\footnote{https://pib.gov.in/Press
 
 Before building a strong vaccine intelligence network that provides last mile delivery to the one in need there needs a strong focus on filling the gaps in distribution. The world’s manufacturing processes and supply chains are underprepared for the task of widespread vaccine distribution\cite{bae2020challenges}.Movement of vaccine in India posses challenges of unknown and unresolved issues that can cause delay. To be able to implement at scale key challenges of maintaining stable temperature ie cold chain , current capacity of cold chain is inadequate for existing vaccination programs\footnote{https://www.bloombergquint.com/global-economics/india-faces-cold-chain-logistics-challenge-for-virus-vaccination}. WHO recommends vaccine should be stored at 2-8\degree C, but studies showing vaccines are exposed to temperature above 8 \degree C\cite{dhere2011pandemic} at every level of storage as vaccine cross different regions. Hence, Coordinated efforts between regional level needed to achieve a stable cold chain with an alternative approach that can offset the waste of vaccine.
 
-Recording data at sites of users by healthcare worker is critical, studies has shown that 10-60\% of data is inaccurate\cite{atkinson2020digital}}. Several challenges like what kind of data is recorded when administering vaccine still persist. Finding solutions and alternative interfaces to record data to reduce inaccuracy. Utilising that data for managing validation across the information system. Data management across different level of local, regional and state. This data could be used across different verticals to make descions.
+Recording data at sites of users by healthcare worker is critical, studies has shown that 10-60\% of data is inaccurate\cite{atkinson2020digital}. Several challenges like what kind of data is recorded when administering vaccine still persist. Finding solutions and alternative interfaces to record data to reduce inaccuracy. Utilising that data for managing validation across the information system. Data management across different level of local, regional and state. This data could be used across different verticals to make descions.
 
 In this paper we define different approaches and practical solutions to certain problems we have identified by reviwing literature. We have defined these solutions in 
 
-\begin{enumerate}
+\begin{itemize}
 	\item Synchronicity
 	\item Event Layer
 	\item AI For Finding Locations
 	\item Cold Chain Alternative
 	\item Use of Cryptographic Methods
-\end{enumerate}
+\end{itemize}
 
 
 
@@ -84,13 +88,47 @@ AI is a powerful catalyst today, the use of AI in healthcare is quite visible su
 \end{enumerate} 
  
 
-\section{Cold Chain Alternative}
+\section{Cold chain consideration}
 
-There are cold chain alternative
+Cold chain ie the storage method of vaccine on a minimum temperature range, vaccine are biological products that become ineffective over period of time, when exposed a loss of potency happen. There are various other reason for vaccine waste like in Delhi fewer people showing up as expected\footnote{https://www.hindustantimes.com/india-news/hesitancy-causes-wastage-of-1-000-vaccine-doses-in-delhi-say-health-officials-101611091051711.html}. On the delivery site there is only limited storage modes that does not last for long.
 
+\subsection{Studies}
+
+ 14 and 35\% of refrigerators or transport shipments were found to have exposed vaccines to freezing temperatures, while in studies that examined all segments of distribution, between 75 and 100\% of the vaccine shipments were exposed.\cite{kartoglu2014tools}. Freezing occurs when vaccine in transit use ice packs for storage, other alternative is to use cold water packs. When developers and manufacturers are designing equipment to store vaccines at locations throughout the supply chain and during transport, there may be a tendency to focus on the individual user rather than the entire supply chain. But storage equipment sits within a larger ecosystem and characteristics such as power requirements, internal capacity, and price can have reverberating effects throughout the supply chain. Vaccine supply chain performance and efficiency depend on the ability of the system to meet storage device needs (such as maintenance technicians and spare parts) in the field. For example, the value of a passive vaccine storage device, i.e. ones that do not require a power source, depends on how well the ice supply chain can be coordinated, how mobile the device is, and how empty devices are swapped with refilled devices.\cite{lee2017importance}
+ 
+  Currently available vaccines possess shortcomings, such as inefficient triggering of a cell-mediated immune response and the lack of protective mucosal immunity. In this regard, recent work has been focused on vaccine delivery systems, as an alternative to injectable vaccines, to increase antigen stability and improve overall immunogenicity. In particular, novel strategies based on edible or intradermal vaccine formulations have been demonstrated to trigger both a systemic and mucosal immune response. These novel vaccination delivery systems offer several advantages over the injectable preparations including self-administration, reduced cost, stability, and elimination of a cold chain \cite{criscuolo2019alternative}
+ 
+ \subsection{Alternative Transformation}
+ Nigeria was suffering from lowest vaccination rates in the world Taking end to end approach, Nigeria used strategy combining innovations in how data was captured, recorded and used to drive decision making and performing higher levels of uptime.\cite{sarley2017transforming}
+ 
+ Methods like HERMES computational simulation model for on ground implementation like in case of Mozambique resulted in vaccine delivery to 27\% The alternative system also produced higher availability at lower costs after new vaccine introductions.\cite{LEE20164998}
+ 
+ In some situations it is more efficient to bring the vaccines to the people instead of the other way around. Mobile medical teams need to route vaccines from one location to another. Halper and Raghavan define the mobile facility routing problem, with moving facilities to serve demand at different nodes in a network. In case of multiple facilities the routing problem is NP-hard and a heuristic is proposed to solve the problem.\cite{duijzer2018literature}
+ 
+ Using constant data loggers as described above in the section of eventing layer, and data layer for synchronised behaviour across all domain. This helps in improving instant action and fall back strategies like what to do when a temperature falls below certain level.
+ 
+ \subsection{Handling Waste}
+ 
+ Design of the medical waste supply chain is critical for supplies that have been used for infectious patients, where the risk of further transmission is always imminent. Pishvaee et al. (2014) propose a method to design a sustainable medical supply chain, considering the complete life cycle of medical supplies and waste. Saif and Elhedhli (2016) take environmental considerations into account when studying the design of a cold supply chain. \cite{duijzer2018literature}
+ 
+ \subsection{Integration}
+ The WHO recommends integrating the vaccine supply chain with other health supply chains. Yadav et al. (2014) study the possibilities of integration. Outsourcing can be beneficial, although it is important to consult all stakeholders in advance, they say. These studies provide illustrations of successful integration from which lessons can be learnt. The authors conclude it is highly important to carefully determine which parts of the supply chain should be outsourced and to whom.\cite{duijzer2018literature}
+ In India there are various methods like using public and private transport infrastructure for delivery methods, private companies like Uber, Ola has built technology that maps faster routes with maximum optimisation of delivery end to end. One use case like utilising existing fleet to transport vaccine internally in local region.
 \section{Cryptographic Methods}
-	
 
+Data privacy while delevering vaccine is something that needs thorough though, a process that define how data is governed interanally and how its going to be shared with stakejolders. This data includes health records and constant monitoring of the users, crucial security is an important pillar in vaccine network. Govt system are highly centralised in nature , definelty a trade off of security 
+	
+\section{Challenges}
+
+Recent studies indicate 71\% of individual from 19 countries would take vaccine. Countries like Russia where only 55\% are willing to participate in the excercise. Governments will have tough time ahead comvincing users. Gaining effectively trust government today needs to fundamentally shift its view and directly motivate citizens with the use of effective data driven planning and dialogue. Right now country like India where scientist from all across diferent domain are raising voices against the vaccine production and its efficacy since some vaccine did not even go to phase 3. 
+
+\subsection{Transparency}
+
+Vaccine builders and government have to be open and clear about the data that it provides to user.
+
+\subsection{Building for Future}
+
+Governemtn needs to start building platforms and system with thinking for future. Technology can be used where value driven systems are in place and citizens can access true information from governemtn abouth thier health.	
   
 
 
